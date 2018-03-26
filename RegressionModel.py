@@ -59,13 +59,13 @@ class SVM(RegModel):
 
 
 class XGBoost(RegModel):
-    def __init__(self, X, y, rnd = 500):
+    def __init__(self, X, y, rnd = 10):
         super().__init__()
         dtrain = xgb.DMatrix(X, label=y)
         evallist = [(dtrain, 'train')]
         param = {'nthread': -1,
-                 'max_depth': 7,
-                 'eta': 0.02,
+                 'max_depth': 5,
+                 'eta': 0.1,
                  'silent': 1,
                  'objective': 'reg:linear',
                  'colsample_bytree': 0.7,
